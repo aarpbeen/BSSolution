@@ -7,7 +7,6 @@ import SignUp from '../Auth/SignUp';
 import Verification from '../Auth/Verification';
 import Slider from 'react-slick';
 import { useSelector} from 'react-redux';
-
 import { HiOutlineUserCircle } from 'react-icons/hi';
 import { ThemeSwitcher } from '@/app/theme/ThemeSwitcher';
 import { IoIosArrowDropdown } from 'react-icons/io';
