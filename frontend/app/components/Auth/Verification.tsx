@@ -3,13 +3,23 @@ import { VscWorkspaceTrusted } from 'react-icons/vsc';
 import { useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { useActivationMutation } from '@/app/redux/feature/auth/authApi';
+import isErrorWithMessage from '../typeGuardFunction/isErrorWithMessage';
+import { HiXCircle } from 'react-icons/hi';
 
 type Props = {
-  setRoute: (route: string) => void;
-  setOpen : (open : string) => void;
+  setRoute: Dispatch<SetStateAction<AuthRoute | null>>;
+  setOpen : (open : boolean) => void;
 };
 
-const Verification: FC<Props> = ({ setRoute,setOpen }) => {
+interface AuthState {
+  token: string | null;  // or `string` if token is always present
+}
+
+interface RootState {
+  auth: AuthState;
+}
+
+  const Verification: FC<Props> = ({ setRoute,setOpen}) => {
   const [invalidError, setInvalidError] = useState<boolean>(false);
   const [verifyNumber, setVerifyNumber] = useState<string[]>(['', '', '', '']); // Initialized as an array of strings
 
@@ -18,7 +28,7 @@ const Verification: FC<Props> = ({ setRoute,setOpen }) => {
 
   const [activation, {isLoading}] = useActivationMutation();
 
-  const { token } = useSelector((state: any) => state.auth);
+  const { token } = useSelector((state: RootState) => state.auth);
 
   const verificationHandler = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,10 +53,13 @@ const Verification: FC<Props> = ({ setRoute,setOpen }) => {
       toast.success(activate_result?.message || "User activated successfully!");
       setRoute('login')
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       // Handle any errors during activation
-      const errorMessage = error?.data?.message || "An unexpected error occurred during activation";
-      toast.error(`Activation failed: ${errorMessage}`);
+      const errorMessage = isErrorWithMessage(error)
+      ? error.data.message
+      : "An unexpected error occurred during activation";
+  
+    toast.error(errorMessage || "Activation Failed!");
     }
   };
   
@@ -67,6 +80,16 @@ const Verification: FC<Props> = ({ setRoute,setOpen }) => {
   };
 
   return (
+    <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50" >
+    <div className="bg-gradient-to-t from-[#bea7a7] h-[360px] to-[#688cc3] bg-opacity-60 dark:bg-gradient-to-t
+     dark:from-[#333030] dark:to-[#272b31] rounded-lg shadow-xl p-6 w-[90%] max-w-md relative" data-aos="fade-down-left">
+      <button
+        className="absolute top-3 right-3 focus:outline-none"
+        onClick={() => setOpen(false)}
+      >
+        <HiXCircle size={28} className="text-black dark:text-white" />
+      </button>
+
     <div className="text-center">
       <h1 className="text-[20px] text-black dark:text-white font-Poppins font-[500] py-2">
         Verify Your Account
@@ -152,6 +175,8 @@ const Verification: FC<Props> = ({ setRoute,setOpen }) => {
           </span>
         </p>
       </div>
+    </div>
+    </div>
     </div>
   );
 };

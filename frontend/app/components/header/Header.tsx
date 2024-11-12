@@ -2,12 +2,11 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../../public/images/logo.png';
-import CustomModal from './CustomAuthModal';
 import Login from '../Auth/Login';
 import SignUp from '../Auth/SignUp';
 import Verification from '../Auth/Verification';
 import Slider from 'react-slick';
-import { useSelector, UseSelector } from 'react-redux';
+import { useSelector} from 'react-redux';
 
 import { HiOutlineUserCircle } from 'react-icons/hi';
 import { ThemeSwitcher } from '@/app/theme/ThemeSwitcher';
@@ -19,10 +18,25 @@ enum AuthRoute {
   VERIFICATION = 'verification',
 }
 
+interface User {
+  role: string;
+  name: string;
+  email: string;
+}
+
+interface AuthState {
+  user: User | null;
+}
+
+interface RootState {
+  auth: AuthState;  
+  
+}
+
 export default function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState(0);
+  // const [activeItem, setActiveItem] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
 
   const [authRoute, setAuthRoute] = useState<AuthRoute | null>(null);
@@ -30,7 +44,7 @@ export default function Navbar() {
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null); // Ref for the button
 
-  const { user } = useSelector((state: any) => state.auth);
+  const { user } = useSelector((state: RootState) => state.auth);
 
   // -----------------SAMPLE DATA
   const servicesImages = [
@@ -419,24 +433,21 @@ export default function Navbar() {
       {/* --------------Authentication Models------------- */}
 
       {isModalOpen && authRoute === AuthRoute.LOGIN && (
-        <CustomModal
+        <Login
           setOpen={closeAuthModal}
-          component={Login}
-          setAuthRoute={setAuthRoute}
+          setRoute={setAuthRoute}
         />
       )}
       {isModalOpen && authRoute === AuthRoute.SIGN_UP && (
-        <CustomModal
+        <SignUp
           setOpen={closeAuthModal}
-          component={SignUp}
-          setAuthRoute={setAuthRoute}
+          setRoute={setAuthRoute}
         />
       )}
       {isModalOpen && authRoute === AuthRoute.VERIFICATION && (
-        <CustomModal
-          setOpen={closeAuthModal}
-          component={Verification}
-          setAuthRoute={setAuthRoute}
+        <Verification
+          setOpen={closeAuthModal}     
+          setRoute={setAuthRoute}
         />
       )}
 

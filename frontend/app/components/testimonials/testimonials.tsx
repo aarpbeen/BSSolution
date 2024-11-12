@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Image from 'next/image';
 
 const testimonials = [
   {
@@ -51,7 +52,7 @@ const Testimonials = () => {
               className="bg-white dark:bg-gray-800 p-8 shadow-lg rounded-lg transition-colors duration-300"
             >
               <div className="flex items-center space-x-4 mb-4">
-                <img 
+                <Image 
                   src={testimonial.image} 
                   alt={testimonial.name} 
                   className="w-16 h-16 rounded-full object-cover" 
@@ -66,7 +67,7 @@ const Testimonials = () => {
                 </div>
               </div>
               <p className="text-gray-700 dark:text-gray-300 italic mb-4">
-                "{testimonial.feedback}"
+                {testimonial.feedback}
               </p>
             </div>
           ))}

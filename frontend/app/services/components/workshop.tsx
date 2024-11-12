@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaChalkboardTeacher, FaRegComments } from 'react-icons/fa';
+import { FaChalkboardTeacher} from 'react-icons/fa';
 import Image from 'next/image';
 
 const Workshop = () => {

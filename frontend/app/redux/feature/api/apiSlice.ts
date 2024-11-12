@@ -1,6 +1,6 @@
 
 import { createApi,fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { userLoggedin, userLoggedOut } from "../auth/authSlice";
+import { userLoggedin } from "../auth/authSlice";
 
 export const apiSlice = createApi({
 reducerPath : 'api',
@@ -21,7 +21,7 @@ endpoints : (builder)=>({
             method : 'GET',
             credentials : 'include' as const,
         }),
-        async onQueryStarted(arg,{queryFulfilled,dispatch}){
+        async onQueryStarted({queryFulfilled,dispatch}){
             try {
              const result = await queryFulfilled;
              dispatch(
@@ -30,7 +30,7 @@ endpoints : (builder)=>({
                     user : result.data.user,
                 })
              )
-            }catch(error:any){
+            }catch(error:unknown){
              console.log("Error occured during login",error)
             }
         }

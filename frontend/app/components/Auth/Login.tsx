@@ -6,13 +6,22 @@ import { AiFillGithub } from "react-icons/ai";
 import { useLoginMutation } from '@/app/redux/feature/auth/authApi';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
-// import { signIn } from 'next-auth/react';
+import isErrorWithMessage from '../typeGuardFunction/isErrorWithMessage';
+import { HiXCircle } from 'react-icons/hi';
+
 
 type Props = {
-  setRoute: (route: string) => void;
+  setRoute: Dispatch<SetStateAction<AuthRoute | null>>;
   setOpen : (open : boolean ) => void;
 
 };
+
+enum AuthRoute {
+  LOGIN = 'LOGIN',
+  SIGN_UP = 'SIGN_UP',
+  VERIFICATION = 'VERIFICATION',
+}
+
 
 const Login: FC<Props> = ({ setRoute , setOpen }) => {
 
@@ -44,15 +53,31 @@ const Login: FC<Props> = ({ setRoute , setOpen }) => {
       router.push('/dashboard/student')
      }
      setOpen(false);
-    }catch(error:any){
-      const errorMessage = error?.data?.message || "An unexpected error occurred during Login";
-      toast.error(`${errorMessage}` || "Login Failed !");
-    }
+    }catch(error:unknown){
+      const errorMessage = isErrorWithMessage(error)
+      ? error.data.message
+      : "An unexpected error occurred during Login";
+  
+    toast.error(errorMessage || "Login Failed!");
+  }
 
   };
 
   return (
-    <div className="max-w-sm mx-auto p-1">
+
+    <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50" >
+    <div className="bg-gradient-to-t from-[#bea7a7] h-[360px] to-[#688cc3] bg-opacity-60 dark:bg-gradient-to-t
+     dark:from-[#333030] dark:to-[#272b31] rounded-lg shadow-xl p-6 w-[90%] max-w-md relative" data-aos="fade-down-left">
+      <button
+        className="absolute top-3 right-3 focus:outline-none"
+        onClick={() => setOpen(false)}
+      >
+        <HiXCircle size={28} className="text-black dark:text-white" />
+      </button>
+
+      {/* Render the component passed as a prop */}
+
+      <div className="max-w-sm mx-auto p-1">
       <h2 className="text-xl flex items-center justify-center mb-4 text-black dark:text-white font-semibold">
         Login
         <MdLogin size={25} className="ml-2" />
@@ -136,14 +161,15 @@ const Login: FC<Props> = ({ setRoute , setOpen }) => {
         <div className="flex items-center justify-center space-x-4 pt-4">
           <div className="relative group">
             <div className="flex items-center justify-center w-8 h-8 rounded-full transition-transform duration-300 group-hover:scale-110 bg-gray-100 dark:bg-gray-700"
-             onClick={()=>signIn('google')}>
+            //  onClick={()=>signIn('google')} 
+             >
               <FcGoogle size={25} className="cursor-pointer" />
             </div>
           </div>
 
           <div className="relative group">
             <div className="flex items-center justify-center w-8 h-8 rounded-full transition-transform duration-300 group-hover:scale-110 bg-gray-100 dark:bg-gray-700"
-            onClick={()=>signIn('github')}
+            // onClick={()=>signIn('github')}
             >
               <AiFillGithub size={25} className="cursor-pointer text-black dark:text-white" />
             </div>
@@ -153,7 +179,7 @@ const Login: FC<Props> = ({ setRoute , setOpen }) => {
 
       <div className="mt-4 text-center">
         <p className="text-xs font-medium text-gray-700 dark:text-gray-400">
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
           <span
             className="text-blue-600 hover:underline dark:text-blue-400 cursor-pointer"
             onClick={() => setRoute("sign-up")}
@@ -163,7 +189,14 @@ const Login: FC<Props> = ({ setRoute , setOpen }) => {
         </p>
       </div>
     </div>
+     
+    </div>
+  </div>
+
+    
   );
 };
 
 export default Login;
+
+

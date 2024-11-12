@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+
 import { HiOutlineDownload } from 'react-icons/hi';
 
 const Resources = () => {

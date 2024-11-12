@@ -3,12 +3,15 @@ import { HiEye, HiEyeOff } from 'react-icons/hi';
 import { MdPersonAdd } from 'react-icons/md';
 import { useRegisterMutation } from '@/app/redux/feature/auth/authApi';
 import toast from 'react-hot-toast';
+import isErrorWithMessage from '../typeGuardFunction/isErrorWithMessage';
+import { HiXCircle } from 'react-icons/hi';
 
 type Props = {
-  setRoute: (route: string) => void;
+  setRoute: Dispatch<SetStateAction<AuthRoute | null>>;
+  setOpen : (open : boolean ) => void;
 };
 
-const SignUp: FC<Props> = ({ setRoute }) => {
+const SignUp: FC<Props> = ({ setRoute,setOpen }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,13 +32,29 @@ const SignUp: FC<Props> = ({ setRoute }) => {
       const result = await register(data).unwrap(); 
       toast.success(result?.message || "Registration successful");
       setRoute("verification"); 
-    } catch (error: any) {
-      const errorMessage = error?.data?.message || "An unexpected error occurred during registration";
-      toast.error(`Registration failed: ${errorMessage}`);
+    } catch (error: unknown) {
+      const errorMessage = isErrorWithMessage(error)
+      ? error.data.message
+      : "An unexpected error occurred during SignUp";
+  
+    toast.error(errorMessage || "SignUp Failed!");
     }
   }
 
   return (
+    <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50" >
+    <div className="bg-gradient-to-t from-[#bea7a7] h-[360px] to-[#688cc3] bg-opacity-60 dark:bg-gradient-to-t
+     dark:from-[#333030] dark:to-[#272b31] rounded-lg shadow-xl p-6 w-[90%] max-w-md relative" data-aos="fade-down-left">
+      <button
+        className="absolute top-3 right-3 focus:outline-none"
+        onClick={() => setOpen(false)}
+      >
+        <HiXCircle size={28} className="text-black dark:text-white" />
+      </button>
+
+      {/* Render the component passed as a prop */}
+      
+ 
     <div className="max-w-sm mx-auto p-1 ">
       <h2 className="text-xl flex items-center justify-center mb-4 text-black dark:text-white font-semibold">
         Register
@@ -150,6 +169,8 @@ const SignUp: FC<Props> = ({ setRoute }) => {
           </span>
         </p>
       </div>
+    </div>
+    </div>
     </div>
   );
 };

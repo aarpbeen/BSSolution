@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FiHome, FiFolder, FiFileText, FiUser } from 'react-icons/fi';
-import Image from 'next/image';
+
 
 const Sidebar = () => {
   const pathname = usePathname();

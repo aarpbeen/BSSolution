@@ -8,9 +8,9 @@ import Workshop from './components/workshop';
 import EducationConsultancy from './components/educationconsul';
 import MergersAndAcquisitions from './components/mergerandacq';
 
-type Props = {}
 
-const ServicePage = (props: Props) => {
+
+const ServicePage = () => {
     return (
         <div className='font-Josefin'>
          <Overview />

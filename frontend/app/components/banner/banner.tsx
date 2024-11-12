@@ -6,7 +6,7 @@ import { HiOutlineSearch } from 'react-icons/hi';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS styles
 
-type Props = {};
+
 
 const images = [
   '/images/nepal.png',
@@ -15,7 +15,7 @@ const images = [
   '/images/global3.png'
 ];
 
-const Banner: FC<Props> = (props) => {
+const Banner: FC<Props> = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Banner: FC<Props> = (props) => {
     AOS.init({ duration: 1000, once: true });
 
     const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex: any) =>
+      setCurrentIndex((prevIndex: number) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
     }, 3000);

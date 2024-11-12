@@ -1,8 +1,6 @@
 import React from 'react'
 
-type Props = {}
-
-const Overview = (props: Props) => {
+const Overview = () => {
   return (
     <section className="pt-16   mt-8">
     <div className="container mx-auto text-center px-6">

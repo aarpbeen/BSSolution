@@ -9,8 +9,24 @@ type Props = {
  requiredRole : string;
 }
 
+interface User {
+    role: string;
+    name: string;
+    email: string;
+  }
+  
+  interface AuthState {
+    user: User | null;
+  }
+  
+  interface RootState {
+    auth: AuthState;  
+    
+  }
+  
+
 const UserProtectedRoute = ({children,requiredRole}:Props) => {
-    const {user} = useSelector((state:any)=> state.auth)
+    const {user} = useSelector((state:RootState)=> state.auth)
 
     useEffect(()=>{
         if(!user){

@@ -6,7 +6,7 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 import { IoCloseCircle } from "react-icons/io5";
 
 const ContactUs = () => {
-  const [isInquiryOpen, setInquiryOpen] = useState(false);
+  // const [isInquiryOpen, setInquiryOpen] = useState(false);
   const [isAppointmentOpen, setAppointmentOpen] = useState(false);
   const [appointmentData, setAppointmentData] = useState({
     name: '',
