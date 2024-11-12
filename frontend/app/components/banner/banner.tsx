@@ -6,16 +6,14 @@ import { HiOutlineSearch } from 'react-icons/hi';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS styles
 
-
-
 const images = [
   '/images/nepal.png',
   '/images/finance.png',
   '/images/global2.png',
-  '/images/global3.png'
+  '/images/global3.png',
 ];
 
-const Banner: FC<Props> = () => {
+const Banner: FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -72,8 +70,9 @@ const Banner: FC<Props> = () => {
             data-aos-delay="200"
           >
             We have <span className="font-bold text-yellow-400">40+</span>{' '}
-            Partners &{' '}
-            <span className="font-bold text-yellow-400">10+</span> Financial institutions linked with us. Find your requirement from here.
+            Partners & <span className="font-bold text-yellow-400">10+</span>{' '}
+            Financial institutions linked with us. Find your requirement from
+            here.
           </p>
 
           {/* Search box */}
