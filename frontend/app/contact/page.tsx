@@ -6,7 +6,7 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 import { IoCloseCircle } from "react-icons/io5";
 
 const ContactUs = () => {
-  // const [isInquiryOpen, setInquiryOpen] = useState(false);
+
   const [isAppointmentOpen, setAppointmentOpen] = useState(false);
   const [appointmentData, setAppointmentData] = useState({
     name: '',
@@ -21,23 +21,23 @@ const ContactUs = () => {
     message: '',
   });
 
-  const handleAppointmentChange = (e) => {
+  const handleAppointmentChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setAppointmentData({ ...appointmentData, [name]: value });
   };
 
-  const handleAppointmentSubmit = (e) => {
+  const handleAppointmentSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('Appointment Data:', appointmentData);
     setAppointmentOpen(false); 
   };
 
-  const handleContactFormChange = (e) => {
+  const handleContactFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setContactFormData({ ...contactFormData, [name]: value });
   };
 
-  const handleContactFormSubmit = (e) => {
+  const handleContactFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('Contact Form Data:', contactFormData);
     setContactFormData({ name: '', email: '', message: '' }); 
@@ -93,7 +93,7 @@ const ContactUs = () => {
               onChange={handleContactFormChange}
               placeholder="Your Message"
               required
-              rows="4"
+              rows={4}
               className="w-full p-2 border border-gray-300 rounded-lg dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
@@ -181,7 +181,7 @@ const ContactUs = () => {
                 value={appointmentData.message}
                 onChange={handleAppointmentChange}
                 placeholder="Additional Message"
-                rows="2"
+                rows={2}
                 className="w-full p-2 border border-gray-300 rounded-lg dark:border-gray-600"
               />
               <button

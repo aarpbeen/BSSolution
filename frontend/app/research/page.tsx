@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { FC, ReactNode } from 'react';
 
 // Sample data for each section, replace with dynamic data as needed
 const researchAreas = [
@@ -28,16 +29,27 @@ const collaborations = [
 ];
 
 // Reusable section component with a distinct shape and style
-const Section = ({ title, children }) => (
-  <section className="mb-12 px-4 py-6 rounded-lg bg-gradient-to-r from-[#3b7183] to-[#3c5a64] shadow-lg transform transition duration-300 hover:scale-105 text-white text-center" data-aos='fade-right'>
+interface SectionProps {
+  title: string;
+  children: ReactNode; // Correctly type children as ReactNode
+}
+
+const Section: FC<SectionProps> = ({ title, children }) => (
+  <section className="mb-12 px-4 py-6 rounded-lg bg-gradient-to-r from-[#3b7183] to-[#3c5a64] shadow-lg transform transition duration-300 hover:scale-105 text-white text-center" data-aos="fade-right">
     <h2 className="text-2xl font-semibold mb-6">{title}</h2>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">{children}</div>
   </section>
 );
 
 // Individual content card with concise styling and circular image
-const ContentCard = ({ title, description, image }) => (
-  <div className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-md transform transition duration-300 hover:shadow-lg hover:scale-105" data-aos='fade-right'>
+interface ContentCardProps {
+  title: string;
+  description: string;
+  image: string;
+}
+
+const ContentCard: FC<ContentCardProps> = ({ title, description, image }) => (
+  <div className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-md transform transition duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-right">
     <div className="flex justify-center mb-4">
       <Image src={image} alt={title} width={80} height={80} className="rounded-full" />
     </div>
@@ -46,10 +58,10 @@ const ContentCard = ({ title, description, image }) => (
   </div>
 );
 
-const ResearchPage = () => {
+const ResearchPage: FC = () => {
   return (
     <div className="max-w-7xl mx-auto p-6 mt-[120px] bg-gray-50 dark:bg-gray-800 rounded-xl">
-      <header className="text-center mb-12" data-aos='fade-right'>
+      <header className="text-center mb-12" data-aos="fade-right">
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Research Initiatives</h1>
         <p className="text-gray-700 dark:text-gray-300 max-w-xl mx-auto">
           Discover our contributions to advancing economic and public policy knowledge.
@@ -59,7 +71,7 @@ const ResearchPage = () => {
       {/* Research Areas */}
       <Section title="Research Areas">
         {researchAreas.map((area) => (
-          <ContentCard key={area.title} title={area.title} description={area.description} image={area.image}  />
+          <ContentCard key={area.title} title={area.title} description={area.description} image={area.image} />
         ))}
       </Section>
 
@@ -95,3 +107,4 @@ const ResearchPage = () => {
 };
 
 export default ResearchPage;
+
