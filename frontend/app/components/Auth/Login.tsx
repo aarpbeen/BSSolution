@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState,Dispatch,SetStateAction } from 'react';
 import { MdLogin } from 'react-icons/md';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 import { FcGoogle } from "react-icons/fc";

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 const Loader: React.FC = () => {
   return (
@@ -15,14 +15,16 @@ const Loader: React.FC = () => {
         <Image
           src="/images/loader.png"
           alt="Loading Book"
-          layout="fill"
-          className="absolute h-26 w-26 z-30 transition-transform duration-500 ease-in-out transform hover:scale-110 animate-bounce rounded-full opacity-90"
+          height={84}
+          width={84}
+          className="absolute z-30 transition-transform duration-500 ease-in-out transform hover:scale-110 animate-bounce rounded-full opacity-90"
         />
       </div>
 
       {/* Loading Message */}
       <p className="absolute bottom-16 text-white text-lg font-medium z-30 tracking-wider">
-      Empowering Your Knowledge  <span className="text-blue-600">through E-Learning</span>
+        Empowering Your Knowledge{' '}
+        <span className="text-blue-600">through E-Learning</span>
       </p>
     </div>
   );

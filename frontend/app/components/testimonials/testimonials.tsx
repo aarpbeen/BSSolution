@@ -52,11 +52,15 @@ const Testimonials = () => {
               className="bg-white dark:bg-gray-800 p-8 shadow-lg rounded-lg transition-colors duration-300"
             >
               <div className="flex items-center space-x-4 mb-4">
-                <Image 
-                  src={testimonial.image} 
-                  alt={testimonial.name} 
-                  className="w-16 h-16 rounded-full object-cover" 
-                />
+              <Image 
+  src={testimonial.image} 
+  alt={testimonial.name} 
+  layout="intrinsic"  // Use intrinsic for a contained layout with specified width and height
+  width={64}          // Set width explicitly in pixels (16 * 4 = 64px for w-16)
+  height={64}         // Set height explicitly in pixels (16 * 4 = 64px for h-16)
+  className="rounded-full object-cover" 
+/>
+
                 <div>
                   <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100">
                     {testimonial.name}
