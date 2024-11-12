@@ -168,7 +168,7 @@ const SignUp: FC<Props> = ({ setRoute,setOpen }) => {
           Already have an account?{' '}
           <span
             className="text-blue-600 hover:underline dark:text-blue-400 cursor-pointer"
-            onClick={() => setRoute("login")}
+            onClick={() => setRoute(AuthRoute.LOGIN)}
           >
             Login
           </span>
