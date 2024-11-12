@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Purchase Receipt</title>
+
+</head>
+<body>
+   <div style="background-color: white; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); padding: 20px; max-width: 600px; margin: 0 auto;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+        <tr>
+            <td style="padding-bottom: 20px;">
+                <img src="https://tailwindflex.com/public/images/logos/favicon-32x32.png" alt="Logo" style="display: inline-block; height: 32px; width: 32px; vertical-align: middle; margin-right: 10px;">
+                <span style="color: #4a5568; font-weight: 600; font-size: 18px;">Aarp Corporation</span>
+            </td>
+            <td align="right" style="color: #4a5568;">
+                <strong style="font-size: 24px;">INVOICE</strong><br>
+                <span style="font-size: 12px;"><%= order.date %></span><br>
+                <span style="font-size: 12px;">Invoice #: <%= order.ID %></span>
+            </td>
+        </tr>
+    </table>
+
+    <hr style="border: none; border-bottom: 1px solid #e2e8f0; margin-bottom: 20px;">
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin-bottom: 20px;">
+        <tr>
+            <td style="color: #2d3748; font-size: 20px; font-weight: 700;">Bill To:</td>
+        </tr>
+        <tr>
+            <td style="color: #4a5568; padding-top: 10px;"><%= order.customer_name %></td>
+        </tr>
+        <tr>
+            <td style="color: #4a5568;">Address 1</td>
+        </tr>
+        <tr>
+            <td style="color: #4a5568;">Address 2</td>
+        </tr>
+        <tr>
+            <td style="color: #4a5568;"><%= order.customer_email %></td>
+        </tr>
+    </table>
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin-bottom: 20px;">
+        <thead>
+            <tr>
+                <th align="left" style="color: #4a5568; padding-bottom: 10px; font-weight: 700;">Course Name</th>
+                <th align="left" style="color: #4a5568; padding-bottom: 10px; font-weight: 700;">Duration</th>
+                <th align="left" style="color: #4a5568; padding-bottom: 10px; font-weight: 700;">Price</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="color: #4a5568; padding: 10px 0;"><%= order.course_name %></td>
+                <td style="color: #4a5568; padding: 10px 0;"><%= order.duration %></td>
+                <td style="color: #4a5568; padding: 10px 0;"><%= order.price %></td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin-bottom: 20px;">
+        <tr>
+            <td align="right" style="color: #4a5568;">Subtotal:</td>
+            <td align="right" style="color: #4a5568;"><%= order.price %></td>
+        </tr>
+        <tr>
+            <td align="right" style="color: #4a5568;">Tax:</td>
+            <td align="right" style="color: #4a5568;">$0</td>
+        </tr>
+        <tr>
+            <td align="right" style="color: #4a5568; font-weight: bold;">Total:</td>
+            <td align="right" style="color: #4a5568; font-weight: bold; font-size: 20px;"><%= order.price %></td>
+        </tr>
+    </table>
+
+    <hr style="border: none; border-top: 1px solid #e2e8f0; margin-bottom: 20px;">
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+        <tr>
+            <td style="color: #4a5568;">Thank you for purchasing the course! We hope you enjoy your learning journey.</td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html> 
+
+

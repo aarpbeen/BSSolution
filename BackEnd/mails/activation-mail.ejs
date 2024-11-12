@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Activation Email</title>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: #f5f7fa;
+            color: #333333;
+        }
+        a {
+            color: #0070f3;
+            text-decoration: none;
+        }
+        h1, h2 {
+            font-family: 'Arial Black', Arial, sans-serif;
+            color: #0070f3;
+            margin: 0;
+        }
+        h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color:white;
+            text-align: center;
+        }
+        h2 {
+            font-size: 22px;
+            text-align: center;
+            margin: 24px 0;
+            background-color: #e1f5fe;
+            padding: 12px;
+            border-radius: 4px;
+            display: inline-block;
+            letter-spacing: 2px;
+            color: #0070f3;
+        }
+        p {
+            font-size: 16px;
+            margin: 0 0 16px;
+        }
+        .email-wrapper {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .email-header {
+            background-color: #0070f3;
+            padding: 24px;
+            text-align: center;
+            color: white;
+        }
+        .email-body {
+            padding: 40px 24px;
+            background-color: white;
+        }
+        .email-footer {
+            background-color: #f5f7fa;
+            padding: 24px;
+            text-align: center;
+            font-size: 14px;
+            color: #888888;
+        }
+        .button {
+            display: inline-block;
+            background-color: #0070f3;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .highlight {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0070f3;
+            letter-spacing: 1px;
+            background-color: #e1f5fe;
+            padding: 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .note {
+            font-size: 14px;
+            color: #888888;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+        <div class="email-header">
+            <h1>Welcome to Elearning</h1>
+        </div>
+
+        <div class="email-body">
+            <p>Hello <%= user.name %>,</p>
+            <p>Thank you for registering with Elearning. To activate your account, please use the following activation code:</p>
+
+            <!-- Highlighted Activation Code -->
+            <h2 class="highlight"><%= activationCode %></h2>
+
+            <p>Please enter this code on the activation page within the next 5 minutes.</p>
+
+            <p>If you did not register for an Elearning account, please ignore this email.</p>
+
+            <!-- Optional Button (can be used if needed) -->
+            <!-- 
+            <a href="#" class="button">Activate Your Account</a> 
+            -->
+        </div>
+
+        <div class="email-footer">
+            <p>If you have any questions, feel free to contact us at <a href="mailto:support@example.com">support@example.com</a>.</p>
+            <p class="note">This email was sent to you as part of the registration process at Elearning.</p>
+        </div>
+    </div>
+</body>
+</html>
