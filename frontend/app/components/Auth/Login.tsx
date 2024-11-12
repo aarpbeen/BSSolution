@@ -22,7 +22,6 @@ enum AuthRoute {
   VERIFICATION = 'VERIFICATION',
 }
 
-
 const Login: FC<Props> = ({ setRoute , setOpen }) => {
 
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -182,7 +181,7 @@ const Login: FC<Props> = ({ setRoute , setOpen }) => {
           Don&apos;t have an account?{' '}
           <span
             className="text-blue-600 hover:underline dark:text-blue-400 cursor-pointer"
-            onClick={() => setRoute("sign-up")}
+            onClick={() => setRoute(AuthRoute.SIGN_UP)}
           >
             Register
           </span>

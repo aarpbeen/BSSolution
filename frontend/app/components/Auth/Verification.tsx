@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useRef, useState,Dispatch,SetStateAction } from 'react';
 import { VscWorkspaceTrusted } from 'react-icons/vsc';
 import { useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
@@ -17,6 +17,11 @@ interface AuthState {
 
 interface RootState {
   auth: AuthState;
+}
+enum AuthRoute {
+  LOGIN = 'LOGIN',
+  SIGN_UP = 'SIGN_UP',
+  VERIFICATION = 'VERIFICATION',
 }
 
   const Verification: FC<Props> = ({ setRoute,setOpen}) => {
@@ -51,7 +56,7 @@ interface RootState {
   
       // Notify the user of a successful activation
       toast.success(activate_result?.message || "User activated successfully!");
-      setRoute('login')
+      setRoute(AuthRoute.LOGIN)
       
     } catch (error: unknown) {
       // Handle any errors during activation

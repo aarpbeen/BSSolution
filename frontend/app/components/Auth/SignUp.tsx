@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState,Dispatch,SetStateAction } from 'react';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 import { MdPersonAdd } from 'react-icons/md';
 import { useRegisterMutation } from '@/app/redux/feature/auth/authApi';
@@ -10,6 +10,11 @@ type Props = {
   setRoute: Dispatch<SetStateAction<AuthRoute | null>>;
   setOpen : (open : boolean ) => void;
 };
+enum AuthRoute {
+  LOGIN = 'LOGIN',
+  SIGN_UP = 'SIGN_UP',
+  VERIFICATION = 'VERIFICATION',
+}
 
 const SignUp: FC<Props> = ({ setRoute,setOpen }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -31,7 +36,7 @@ const SignUp: FC<Props> = ({ setRoute,setOpen }) => {
     try {
       const result = await register(data).unwrap(); 
       toast.success(result?.message || "Registration successful");
-      setRoute("verification"); 
+      setRoute(AuthRoute.VERIFICATION); 
     } catch (error: unknown) {
       const errorMessage = isErrorWithMessage(error)
       ? error.data.message

@@ -36,7 +36,7 @@ interface RootState {
 export default function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const [activeItem, setActiveItem] = useState(0);
+
   const [isModalOpen, setModalOpen] = useState(false);
 
   const [authRoute, setAuthRoute] = useState<AuthRoute | null>(null);
