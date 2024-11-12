@@ -13,9 +13,9 @@ import { ThemeSwitcher } from '@/app/theme/ThemeSwitcher';
 import { IoIosArrowDropdown } from 'react-icons/io';
 
 enum AuthRoute {
-  LOGIN = 'login',
-  SIGN_UP = 'sign-up',
-  VERIFICATION = 'verification',
+  LOGIN = 'LOGIN',
+  SIGN_UP = 'SIGN_UP',
+  VERIFICATION = 'VERIFICATION',
 }
 
 interface User {
@@ -88,8 +88,10 @@ export default function Navbar() {
   }, []);
   // ---------------------
 
-  const toggleMenu = () =>
-    setIsMenuOpen(!isMenuOpen) || setIsDropdownOpen(false);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    setIsDropdownOpen(false);
+  };
 
   const openAuthModal = (route: AuthRoute) => {
     setAuthRoute(route);
