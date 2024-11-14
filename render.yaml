@@ -1,7 +1,7 @@
 services:
   - type: web
-    name: backend
+    name: BackEnd
     env: node
     buildCommand: npm install
     startCommand: npm start
-    rootDirectory: ./backend  # Specify the path to your backend folder here
+    rootDirectory: ./BackEnd  # Specify the path to your backend folder here
