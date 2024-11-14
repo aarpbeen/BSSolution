@@ -87,6 +87,23 @@ export default function Navbar() {
   }, []);
   // ---------------------
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) { // 768px is Tailwind's `md` breakpoint
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Run once in case the component loads on a large screen
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // --------------------
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     setIsDropdownOpen(false);
