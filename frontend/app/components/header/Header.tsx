@@ -167,7 +167,7 @@ export default function Navbar() {
                   <Link
                     href="/"
                     className="block py-2 px-3 text-gray-700 border-b border-gray-200 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-200 dark:border-gray-700"
-                  >
+                  onClick={toggleMenu}>
                     Home
                   </Link>
                 </li>
@@ -175,7 +175,7 @@ export default function Navbar() {
                   <Link
                     href="/about"
                     className="block py-2 px-3 text-gray-700 border-b border-gray-200 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-200 dark:border-gray-700"
-                  >
+                  onClick={toggleMenu}> 
                     About Us
                   </Link>
                 </li>
@@ -194,7 +194,7 @@ export default function Navbar() {
                   <Link
                     href="/marketplace"
                     className="block py-2 px-3 text-gray-700 border-b border-gray-200 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-200 dark:border-gray-700 "
-                  >
+                    onClick={toggleMenu } >
                     Marketplace
                   </Link>
                 </li>
@@ -202,7 +202,7 @@ export default function Navbar() {
                   <Link
                     href="/resources"
                     className="block py-2 px-3 text-gray-700 border-b border-gray-200 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-200 dark:border-gray-700 "
-                  >
+                    onClick={toggleMenu} >
                     Resources
                   </Link>
                 </li>
@@ -210,7 +210,7 @@ export default function Navbar() {
                   <Link
                     href="/contact"
                     className="block py-2 px-3 text-gray-700 border-b border-gray-200 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-200 dark:border-gray-700 "
-                  >
+                    onClick={toggleMenu} >
                     Contact
                   </Link>
                 </li>
@@ -277,7 +277,7 @@ export default function Navbar() {
             <div
               ref={dropdownRef}
               id="mega-menu-full-dropdown"
-              className="mt-1 lg:w-[88%] border-t-4 text-gray-700 border-x-4 sm:w-full mx-auto bg-[#ffffff] border-gray-300 shadow-lg border-y  dark:bg-gray-800 dark:border-gray-600 sm:overflow-y-scroll max-h-[300px] md:overflow-hidden overflow-y-auto rounded-lg transition-all duration-500 ease-in-out"
+              className={`mt-1 lg:w-[88%] border-t-4 ${isMenuOpen ? 'absolute top-[200px] left-0' : ''} text-gray-700 border-x-4 sm:w-full mx-auto bg-[#ffffff] border-gray-300 shadow-lg border-y  dark:bg-gray-800 dark:border-gray-600 sm:overflow-y-scroll max-h-[300px] md:overflow-hidden overflow-y-auto rounded-lg transition-all duration-500 ease-in-out`}
               data-aos="fade-right"
             >
               <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:grid-cols-4 md:px-6">
@@ -321,7 +321,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Other columns with text */}
-                <ul className="border-r border-gray-200 dark:border-gray-700 px-4">
+                <ul className="border-r border-gray-200 dark:border-gray-700 px-4" onClick={toggleMenu}>
                   <li>
                     <Link
                       href="/research"
