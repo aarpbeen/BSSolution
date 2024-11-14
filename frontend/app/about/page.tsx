@@ -17,7 +17,7 @@ const AboutUs = () => {
         >
           <div className="lg:w-1/2 relative h-96 mt-4">
             <Image
-              src="/images/overview.png"
+              src="/images/about-overview.png"
               alt="Company Overview"
               layout="fill"
               objectFit="cover"
