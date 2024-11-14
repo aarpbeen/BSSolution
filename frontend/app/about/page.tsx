@@ -13,15 +13,14 @@ const AboutUs = () => {
           className="flex flex-col lg:flex-row items-center mt-24 mb-24"
           data-aos="fade-up"
         >
-          <div className="lg:w-1/2 relative h-96 mt-4">
+          <div className="lg:w-1/2 sm:w-[70%] relative h-96 mt-4">
             <Image
               src="/images/about-overview.png"
               alt="Company Overview"
-              layout="responsive"
-              width={1920} // Example width in pixels
-              height={1080} // Example height in pixels
-              objectFit="cover"
-              className="transform hover:scale-105 transition-transform duration-300"
+              objectFit='cover'
+              height={1100}
+              width={1200}
+            
             />
           </div>
           <div className="lg:w-1/2 space-y-6 mt-8 lg:mt-0 lg:pl-12">
