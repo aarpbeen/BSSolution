@@ -294,7 +294,7 @@ export default function Navbar() {
             <div
               ref={dropdownRef}
               id="mega-menu-full-dropdown"
-              className={`mt-1 lg:w-[88%] border-t-4 ${isMenuOpen ? 'absolute top-[200px] left-0 max-h-[600px] pb-[190px] ' : ''} text-gray-700 border-x-4 sm:w-full mx-auto bg-[#ffffff] border-gray-300 shadow-lg border-y  dark:bg-gray-800 dark:border-gray-600 sm:overflow-y-scroll md:max-h-[300px] md:overflow-hidden overflow-y-auto rounded-lg transition-all duration-500 ease-in-out`}
+              className={`mt-1 lg:w-[88%] border-t-4 ${isMenuOpen ? 'absolute top-[200px] left-0 max-h-[600px] ' : ''} text-gray-700 border-x-4 sm:w-full mx-auto bg-[#ffffff] border-gray-300 shadow-lg border-y  dark:bg-gray-800 dark:border-gray-600 sm:overflow-y-scroll md:max-h-[300px] md:overflow-hidden overflow-y-auto rounded-lg transition-all duration-500 ease-in-out`}
               data-aos="fade-right"
             >
               <div className={`grid max-w-screen-xl ${isMenuOpen ? 'space-y-3' : ''} px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:grid-cols-4 md:px-6`}>
