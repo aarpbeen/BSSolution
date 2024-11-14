@@ -20,7 +20,7 @@ const AboutUs = () => {
               layout="responsive"
               width={1920} // Example width in pixels
               height={1080} // Example height in pixels
-              objectFit="fill"
+              objectFit="cover"
               className="transform hover:scale-105 transition-transform duration-300"
             />
           </div>
