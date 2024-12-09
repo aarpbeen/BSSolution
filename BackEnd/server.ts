@@ -1,5 +1,5 @@
-import {app}  from "./app"
 require("dotenv").config();
+import {app}  from "./app"
 import connectDB from "./utils/db";
 import { v2 as cloudinary } from "cloudinary";
 
