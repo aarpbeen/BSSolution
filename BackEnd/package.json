@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npm install dotenv && tsc",
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn src/server.ts"
   },
