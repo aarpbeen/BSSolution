@@ -4,11 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = require("./app");
-const dotenv_1 = __importDefault(require("dotenv"));
+require("dotenv").config();
 const db_1 = __importDefault(require("./utils/db"));
 const cloudinary_1 = require("cloudinary");
-// config dotenv
-dotenv_1.default.config();
 // cloudinary config
 cloudinary_1.v2.config({
     cloud_name: process.env.CLOUD_NAME,
