@@ -27,7 +27,7 @@ export const sendEmail = async (options : ISendMailOptions) : Promise <void> => 
     const {to,subject,templateData,templateName} = options;
 
     // Render the EJS template
-    const templatePath = path.join(__dirname, `../mails/${templateName}.ejs`);
+    const templatePath = path.resolve(__dirname, `../mails/${templateName}.ejs`);
 
     // Render the EJS template
     const html = await ejs.renderFile(templatePath,templateData) as string;
