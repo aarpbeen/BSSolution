@@ -1,20 +1,13 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "module": "CommonJS",
-    "strict": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "module": "commonjs",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "outDir": "./dist",
-    "rootDir": "."
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "strict": true
   },
-  "include": [
-    "server.ts",
-    "controllers/**/*.ts",
-    "middleware/**/*.ts",
-    "types/**/*.d.ts"  // Include the custom type definitions
-  ],
+  "include": ["server.ts","types/express.d.ts"],
   "exclude": ["node_modules"]
 }
