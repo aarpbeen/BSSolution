@@ -14,11 +14,23 @@ app.use(morgan('dev'))
 // cookie parser
 app.use(cookieParser())
 
-// corss origin resource sharing
-app.use(cors({
-    origin:'https://bssolutionfirst.vercel.app', // Allow requests from localhost:3000
-    credentials: true, // Allow cookies and credentials
-}));
+const allowedOrigins = [
+    'http://localhost:3000', 
+    'https://bssolutionfirst.vercel.app'
+  ];
+  
+  app.use(
+    cors({
+      origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);  // Allow the request
+        } else {
+          callback(new Error('Not allowed by CORS'));  // Reject the request
+        }
+      },
+      credentials: true,  // Allow cookies and credentials
+    })
+  );
 
 // Import router
 app.use('/api/v1',userRouter)

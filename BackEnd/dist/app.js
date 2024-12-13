@@ -16,9 +16,19 @@ exports.app.use(express_1.default.json({ limit: "50mb" }));
 exports.app.use(morgan('dev'));
 // cookie parser
 exports.app.use((0, cookie_parser_1.default)());
-// corss origin resource sharing
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://bssolutionfirst.vercel.app'
+];
 exports.app.use((0, cors_1.default)({
-    origin: 'http://localhost:3000', // Allow requests from localhost:3000
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true); // Allow the request
+        }
+        else {
+            callback(new Error('Not allowed by CORS')); // Reject the request
+        }
+    },
     credentials: true, // Allow cookies and credentials
 }));
 // Import router
