@@ -28,7 +28,7 @@ const transporter = nodemailer_1.default.createTransport({
 const sendEmail = (options) => __awaiter(void 0, void 0, void 0, function* () {
     const { to, subject, templateData, templateName } = options;
     // Render the EJS template
-    const templatePath = path_1.default.join(__dirname, `../mails/${templateName}.ejs`);
+    const templatePath = path_1.default.resolve(__dirname, `../mails/${templateName}.ejs`);
     // Render the EJS template
     const html = yield ejs_1.default.renderFile(templatePath, templateData);
     const mailOptions = {

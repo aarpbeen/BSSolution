@@ -8,6 +8,6 @@
     "outDir": "dist",
     "strict": true
   },
-  "include": ["server.ts","types/express.d.ts"],
+  "include": ["server.ts","types/express.d.ts","mails/**/*"],
   "exclude": ["node_modules"]
 }
