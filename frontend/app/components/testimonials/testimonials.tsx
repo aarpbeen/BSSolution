@@ -11,21 +11,21 @@ const testimonials = [
     position: 'CEO, Fintech Innovators',
     feedback:
       'B.S. Global provided exceptional research insights that helped us make informed decisions on our strategic financial moves. Their expertise is unmatched!',
-    image: '/images/testimonial-sarah.jpg',
+    image: '/images/avatar.png',
   },
   {
     name: 'James Smith',
     position: 'Head of Business Strategy, FutureCorp',
     feedback:
       'The consultancy services offered by B.S. Global have transformed our approach to business. Their deep knowledge of market trends helped us refine our strategy.',
-    image: '/images/testimonial-james.jpg',
+      image: '/images/avatar.png',
   },
   {
     name: 'Alicia Brown',
     position: 'Founder, Global Markets Inc.',
     feedback:
       'Their education and certification programs are top-notch. We were able to upskill our employees and achieve greater results thanks to their courses.',
-    image: '/images/testimonial-alicia.jpg',
+      image: '/images/avatar.png',
   },
 ];
 

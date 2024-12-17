@@ -40,7 +40,6 @@ const Login: FC<Props> = ({ setRoute , setOpen }) => {
     e.preventDefault();
     try {
     const {user} = await login({email,password}).unwrap();
-    console.log("this is user", user)
      toast.success("Login successfull ")
      if(user.role === 'admin'){
       router.push('/dashboard/admin')
