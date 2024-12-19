@@ -4,7 +4,7 @@ import BannerManagement from './BannerManagement';
 
 const HomePageEdit = () => {
   // State for the sections to manage form inputs
-  const [banner, setBanner] = useState({ title: '', description: '', imageUrl: '' });
+ 
   const [coreServices, setCoreServices] = useState([
     { name: '', imageUrl: '', description: '' },
    
@@ -21,11 +21,7 @@ const HomePageEdit = () => {
   // State to handle dropdown selection
   const [selectedSection, setSelectedSection] = useState<string>('banner');
 
-  // Handle form submission
-  const handleSubmitBanner = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Logic to update banner (e.g., API call)
-  };
+
 
   const handleSubmitCoreServices = (e: React.FormEvent) => {
     e.preventDefault();
