@@ -94,9 +94,11 @@ const HomePageEdit = () => {
                   <input
                     type="file"
                     onChange={(e) => {
-                      const updatedServices = [...coreServices];
-                      updatedServices[index].imageUrl = URL.createObjectURL(e.target.files[0]);
-                      setCoreServices(updatedServices);
+                      if (e.target.files && e.target.files[0]) { // Check if files is not null and has at least one file
+                        const updatedServices = [...coreServices];
+                        updatedServices[index].imageUrl = URL.createObjectURL(e.target.files[0]);
+                        setCoreServices(updatedServices);
+                      }
                     }}
                     className="p-2 border rounded-md"
                   />
@@ -142,9 +144,11 @@ const HomePageEdit = () => {
                   <input
                     type="file"
                     onChange={(e) => {
-                      const updatedProcesses = [...processes];
-                      updatedProcesses[index].imageUrl = URL.createObjectURL(e.target.files[0]);
-                      setProcesses(updatedProcesses);
+                      if (e.target.files && e.target.files[0]) { // Check if files is not null and has at least one file
+                        const updatedProcesses = [...processes];
+                        updatedProcesses[index].imageUrl = URL.createObjectURL(e.target.files[0]);
+                        setProcesses(updatedProcesses);
+                      }
                     }}
                     className="p-2 border rounded-md"
                   />
