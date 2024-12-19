@@ -21,19 +21,21 @@ endpoints : (builder)=>({
             method : 'GET',
             credentials : 'include' as const,
         }),
-        async onQueryStarted({queryFulfilled,dispatch}){
-            try {
-             const result = await queryFulfilled;
-             dispatch(
-                userLoggedin({
-                    token : result.data.accessToken,
-                    user : result.data.user,
-                })
-             )
-            }catch(error:unknown){
-             console.log("Error occured during login",error)
-            }
-        }
+    async onQueryStarted(_, { queryFulfilled, dispatch }) {
+  try {
+    const { data } = await queryFulfilled;
+    console.log("this is result in loadUser", data);
+
+    dispatch(
+      userLoggedin({
+        token: data.accessToken,
+        user: data.user,
+      })
+    );
+  } catch (error) {
+    console.error("Error loading user:", error);
+  }
+}
     })
 })
 });

@@ -1,64 +1,59 @@
 
-'use client'
-import { FiBell, FiSettings } from 'react-icons/fi';
-import { HiOutlineUserCircle } from 'react-icons/hi';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { FaCog } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 
-const Header = ({ userName, profileImage }: { userName: string; profileImage?: string }) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+const AdminHeader = () => {
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+  const router = useRouter();
+
+
+
+  const handleNavigation = (route: string) => {
+    router.push(route);
+    setProfileMenuOpen(false);
+  };
 
   return (
-    <header className="flex justify-between items-center mx-2 p-4 bg-white dark:bg-gray-900 shadow mt-[80px] rounded-xl border-x-2 border-y-2 transition-colors duration-300">
-      {/* Greeting and Date */}
-      <div>
-        <h1 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Welcome, {userName}</h1>
-        
-      </div>
+    <div className=" flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 mt-[80px] ">
+      <header className="bg-[#346472] dark:bg-gray-800 text-white p-4 shadow-md flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Admin Dashboard</h1>
 
-      {/* Icons and Profile Section */}
-      <div className="flex items-center gap-6">
-        <FiBell className="text-gray-600 dark:text-gray-300 text-xl cursor-pointer hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-200" />
-        <FiSettings className="text-gray-600 dark:text-gray-300 text-xl cursor-pointer hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-200" />
-        
-        {/* Profile Image and Dropdown */}
         <div className="relative">
-          <div
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="cursor-pointer w-10 h-10 rounded-full overflow-hidden border-2 border-gray-300 dark:border-gray-600"
+          <button
+            onClick={() => setProfileMenuOpen(!profileMenuOpen)}
+            className="flex items-center space-x-2 pr-9  dark:text-white hover:text-gray-500 dark:hover:text-gray-300"
           >
-            {profileImage ? (
-              <Image
-                src={profileImage}
-                alt="Profile"
-                width={40}
-                height={40}
-                className="object-cover w-full h-full"
-              />
-            ) : (
-              <HiOutlineUserCircle className="text-gray-600 dark:text-gray-300 text-3xl" />
-            )}
-          </div>
-          
-          {/* Dropdown Menu */}
-          {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg py-2 z-10">
-              <Link href="/dashboard/profile" className="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
-                Profile
-              </Link>
-              <Link href="/dashboard/settings" className="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
-                Settings
-              </Link>
-              <button className="block w-full text-left px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
-                Log Out
-              </button>
-            </div>
+            <FaCog className="text-xl" />
+            <span>Setting</span>
+          </button>
+
+          {profileMenuOpen && (
+            <ul className="absolute right-0 mt-2 w-48 bg-white pt-4 dark:bg-gray-800 rounded-xl text-gray-800 dark:text-gray-100 shadow-lg ring-1 ring-black ring-opacity-5">
+              <li
+                onClick={() => handleNavigation('/profile')}
+                className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+              >
+                Change Avatar
+              </li>
+              <li
+                onClick={() => handleNavigation('/change-password')}
+                className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+              >
+                Change Password
+              </li>
+              <li
+                onClick={() => handleNavigation('/logout')}
+                className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+              >
+                Logout
+              </li>
+            </ul>
           )}
         </div>
-      </div>
-    </header>
+      </header>    
+    </div>
   );
 };
 
-export default Header;
+export default AdminHeader;
