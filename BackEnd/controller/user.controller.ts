@@ -197,6 +197,7 @@ export const updateAccessToken = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const refresh_token = req.cookies.refresh_token as string;
+      console.log("this is for production refresh token", refresh_token)
 
       // Check if refresh token exists
       if (!refresh_token) {
