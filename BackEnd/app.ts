@@ -14,21 +14,28 @@ app.use(morgan('dev'))
 // cookie parser
 app.use(cookieParser())
 
-const allowedOrigins = [
-    'http://localhost:3000', 
-    'https://bssolutionfirst.vercel.app'
-  ];
+// const allowedOrigins = [
+//     'http://localhost:3000', 
+//     'https://bssolutionfirst.vercel.app'
+//   ];
   
+  // app.use(
+  //   cors({
+  //     origin: (origin, callback) => {
+  //       if (!origin || allowedOrigins.includes(origin)) {
+  //         callback(null, true);  // Allow the request
+  //       } else {
+  //         callback(new Error('Not allowed by CORS'));  // Reject the request
+  //       }
+  //     },
+  //     credentials: true,  // Allow cookies and credentials
+  //   })
+  // );
+
   app.use(
     cors({
-      origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-          callback(null, true);  // Allow the request
-        } else {
-          callback(new Error('Not allowed by CORS'));  // Reject the request
-        }
-      },
-      credentials: true,  // Allow cookies and credentials
+      origin: '*',
+      credentials: true,
     })
   );
 
